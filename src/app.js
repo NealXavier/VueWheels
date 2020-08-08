@@ -1,9 +1,11 @@
 import Vue from 'vue'
+import accordion from './Accordion/accordion'
+import acditem from './Accordion/acdItem'
 
-let view = new Vue({
-  el:'#app',
-  data:{
-    msg:'hello'
-  }
+
+Vue.component('x-accordion',accordion)
+Vue.component('x-acditem',acditem)
+
+new Vue({
+  el:"#app",
 })
-console.log(view);
