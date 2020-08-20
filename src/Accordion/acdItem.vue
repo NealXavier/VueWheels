@@ -3,7 +3,7 @@
     <div class="title">
         {{title}}
     </div>
-    <div class="content" v-if="open">
+    <div class="content" v-if="isOpen">
       <slot></slot>
     </div>
   </div>
@@ -15,11 +15,6 @@
 <script>
 export default {
   name:'acditem',
-  data(){
-    return {
-      open:false
-    }
-  },
   props: {
     title: {
       type: String,
@@ -27,31 +22,31 @@ export default {
     },
     name:{
       type:String,
+    },
+  },
+  data(){
+    return {
+      isOpen:false
     }
   },
   inject:['eventBus'],
   mounted(){
-    this.eventBus && this.eventBus.$on('update:selected',(name)=>{
-      if(name !== this.name){
-        this.close()
+    this.eventBus && this.eventBus.$on('update:selected',(names)=>{
+      if(names.indexOf(this.name)>=0){
+        this.isOpen = true
       }else{
-        this.show()
+        this.isOpen = false
       }
     })
   },
   methods:{
     toggle(){
-      this.open=(this.open === true?false:true)
-      if(this.open){
-        this.eventBus && this.eventBus.$emit('update:selected',this.name) 
-      }
+      if(this.isOpen){
+        this.eventBus.$emit('update:removeSelected',this.name)
+      }else{
+        this.eventBus.$emit('update:addSelected',this.name)
+      }  
     },
-    close(){
-      this.open = false
-    },
-    show(){
-      this.open = true
-    }
   }
 }
 </script>

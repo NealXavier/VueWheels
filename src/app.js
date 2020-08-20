@@ -10,7 +10,7 @@ new Vue({
   el:"#app",
   data() {
     return {
-      selectTab:'2'
+      selectTab:['2']
     }
   },
 })
