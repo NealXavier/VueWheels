@@ -4,6 +4,7 @@
   "description": " yangsu's ui components using vue",
   "main": "index.js",
   "scripts": {
+    "start":"npx parcel index.html --no-cache",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

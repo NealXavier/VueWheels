@@ -25,24 +25,32 @@ export default {
       type: String,
       required: true
     },
+    name:{
+      type:String,
+    }
   },
   inject:['eventBus'],
   mounted(){
-    this.eventBus && this.eventBus.$on('update:selected',(vm)=>{
-      if(vm!==this){
+    this.eventBus && this.eventBus.$on('update:selected',(name)=>{
+      if(name !== this.name){
         this.close()
+      }else{
+        this.show()
       }
     })
   },
   methods:{
     toggle(){
-      this.open=(this.open===true?false:true)
+      this.open=(this.open === true?false:true)
       if(this.open){
-        this.eventBus && this.eventBus.$emit('update:selected',this)
+        this.eventBus && this.eventBus.$emit('update:selected',this.name) 
       }
     },
     close(){
       this.open = false
+    },
+    show(){
+      this.open = true
     }
   }
 }

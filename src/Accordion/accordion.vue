@@ -12,7 +12,7 @@ export default {
   name:'Accordion',
   data(){
     return {
-      eventBus:new Vue()
+      eventBus:new Vue(),
     }
   },
   props:{
@@ -20,6 +20,9 @@ export default {
       type:Boolean,
       required:false,
       default:false
+    },
+    selected:{
+      type:String
     }
   },
   provide(){
@@ -28,6 +31,12 @@ export default {
         eventBus:this.eventBus
       }
     }
+  },
+  mounted(){
+    this.eventBus.$emit('update:selected',this.selected)
+    this.eventBus.$on('update:selected',(selected)=>{
+      this.$emit('update:selected',selected)
+    })
   }
 }
 </script>
@@ -39,5 +48,3 @@ export default {
     border: 1px solid $grey;
     border-radius: $border-radius;
 </style>
-
-

@@ -8,4 +8,9 @@ Vue.component('x-acditem',acditem)
 
 new Vue({
   el:"#app",
+  data() {
+    return {
+      selectTab:'2'
+    }
+  },
 })
