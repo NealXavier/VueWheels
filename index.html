@@ -6,14 +6,34 @@
   <title>vue造轮子</title>
 </head>
 <body>
-  <div id="app" style = "padding: 100px;">
+  <div id="app">
+    <!-- Accordion -->
     <!--.sync =  @update:selected=(val)=>selectTab=val-->
-    <x-accordion :selected.sync = "selectTab" single>
-      <x-acditem title="标题1" name="1">内容1</x-acditem>
-      <x-acditem title="标题2" name="2">内容2</x-acditem>
-      <x-acditem title="标题3" name="3">内容3</x-acditem>
+    <!-- <x-accordion :selected.sync = "selectTab" single>
+      <x-acditem title="title1" name="1">content1</x-acditem>
+      <x-acditem title="title2" name="2">content2</x-acditem>
+      <x-acditem title="title3" name="3">content3</x-acditem>
     </x-accordion>
-    {{selectTab}}
+    {{selectTab}} -->
+
+    <!--Tab-->
+    {{selectedTab}}
+    <x-tab :selected.sync="selectedTab">
+      <x-tab-nav>
+        <template slot="actions">
+          <button>设置</button>
+        </template>
+        <x-tab-item name="gs">Warriors</x-tab-item>
+        <x-tab-item name="la">Lakers</x-tab-item>
+        <x-tab-item name="bk">Nets</x-tab-item>
+      </x-tab-nav>
+      <x-tab-content>
+        <x-tab-pane name="gs">StephenCurry</x-tab-pane>
+        <x-tab-pane name="la">LeBronJames</x-tab-pane>
+        <x-tab-pane name="bk">KevinDurant</x-tab-pane>
+      </x-tab-content> 
+    </x-tab>
+
   </div>
   <script src='./src/app.js'></script>
 </body>
