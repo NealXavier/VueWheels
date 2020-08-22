@@ -41,12 +41,14 @@ export default {
 </script>
 <style lang="stylus" scoped>
   $tab-height = 40px
+  $border-color= #ddd
   .tab-nav
     height $tab-height 
     display flex
     align-items center
     justify-content flex-start
     position relative
+    border-bottom 1px solid $border-color
     & > .line
       position: absolute
       bottom: 0
