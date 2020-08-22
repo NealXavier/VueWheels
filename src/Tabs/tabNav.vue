@@ -49,6 +49,7 @@ export default {
     justify-content flex-start
     position relative
     border-bottom 1px solid $border-color
+    cursor: pointer
     & > .line
       position: absolute
       bottom: 0

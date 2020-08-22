@@ -12,6 +12,10 @@ export default {
   props:{
     name:{
       type:String,
+    },
+    disabled:{
+      type:Boolean,
+      default:false
     }
   },
   data() {
@@ -22,7 +26,8 @@ export default {
   computed:{
     classes(){
       return {
-        active:this.isActive
+        active:this.isActive,
+        disabled:this.disabled
       }
     }
   },
@@ -36,12 +41,14 @@ export default {
   },
   methods:{
     handleClick(){
+      if(this.disabled)return
       this.eventBus.$emit("trigger:selected",this.name)
     }
   }
 };
 </script>
 <style scoped lang="stylus">
+  $disabledColor = grey
   .tab-item
     flex-shrink 0
     padding 0 1em
@@ -49,6 +56,9 @@ export default {
     display flex
     align-items center
     position relative
+    &.disabled
+      color $disabledColor
+      cursor not-allowed
     &.active
       color #00a1d6
 </style>
