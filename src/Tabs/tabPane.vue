@@ -1,12 +1,13 @@
 <!--  -->
 <template>
-  <div class="tab-pane" :class="classes">
+  <div class="tab-pane" v-if="isVisible">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
+  name:"TabPane",
   props:{
     name:{
       type:String,
@@ -14,22 +15,13 @@ export default {
   },
   data() {
     return {
-      isActive:false
+      isVisible:false
     };
-  },
-  computed:{
-    classes(){
-      return {active:this.isActive}
-    }
   },
   inject:["eventBus"],
   created() {
-    this.eventBus.$on("update:selected",(selected)=>{
-      if(this.name === selected){
-        this.isActive = true
-      }else{
-        this.isActive = false
-      }
+    this.eventBus.$on("update:selected",(selected,vm)=>{
+      this.isVisible = this.name === selected
     })
   },
   mounted() {},

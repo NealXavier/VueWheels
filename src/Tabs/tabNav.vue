@@ -1,8 +1,9 @@
 <!--  -->
 <template>
-  <div class="tab-nav">
+  <div class="tab-nav" ref="nav">
     <slot></slot>
-    <div class="actions-wrapper">
+    <div class="line" ref="line"></div>
+    <div class="actions-wrapper"> 
       <slot name="actions" class="actions"></slot>
     </div>
   </div>
@@ -10,20 +11,32 @@
 
 <script>
 export default {
+  name:"TabNav",
   props:{
     selected:{
       type:String,
     }
   },
   data() {
-    return {
-      
+    return { 
     }
   },
+  inject:["eventBus"],
   created() {
   },
   mounted() {
+    this.eventBus.$on("update:selected",(selected,vm)=>{
+      this.updateLinePosition(vm)
+    })
   },
+  methods:{
+    updateLinePosition(vm){
+      let {width, left} = vm.$el.getBoundingClientRect()
+      let {left: left2} = this.$refs.nav.getBoundingClientRect()
+      this.$refs.line.style.width = `${width}px`
+      this.$refs.line.style.left = `${left - left2}px`
+    }
+  }
 };
 </script>
 <style lang="stylus" scoped>
@@ -33,7 +46,11 @@ export default {
     display flex
     align-items center
     justify-content flex-start
-    border 1px solid red
+    position relative
+    & > .line
+      position: absolute
+      bottom: 0
+      border-bottom: 1px solid #00a1d6
     & > .actions-wrapper
       margin-left auto
       padding-right 2em

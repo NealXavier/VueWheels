@@ -1,11 +1,14 @@
 <template>
-  <div class="tab-item" :class="classes" @click="handleClick">
+  <div class="tab-item" 
+       :class="classes" 
+       @click="handleClick">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
+  name:"TabItem",
   props:{
     name:{
       type:String,
@@ -25,15 +28,12 @@ export default {
   },
   inject:["eventBus"],
   created() {
-    this.eventBus.$on("update:selected",(selected)=>{
-      if(this.name === selected){
-        this.isActive = true
-      }else{
-        this.isActive = false
-      }
+    this.eventBus.$on("update:selected",(selected,vm)=>{
+      this.isActive = this.name === selected
     })
   },
-  mounted() {},
+  mounted() {
+  },
   methods:{
     handleClick(){
       this.eventBus.$emit("trigger:selected",this.name)
@@ -45,6 +45,10 @@ export default {
   .tab-item
     flex-shrink 0
     padding 0 1em
+    height 100%
+    display flex
+    align-items center
+    position relative
     &.active
-      background red
+      color #00a1d6
 </style>

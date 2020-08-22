@@ -8,6 +8,7 @@
 <script>
 import Vue from "vue";
 export default {
+  name:"Tab",
   props: {
     selected: {
       type: String,
@@ -23,14 +24,23 @@ export default {
       eventBus: this.eventBus,
     };
   },
-  created() {
-    this.eventBus.$on("trigger:selected", (name) => {
-      this.$emit("update:selected", name);
-      this.eventBus.$emit("update:selected", name);
-    });
+  methods:{
+    findChosenTabItem(name){
+      let tabNav = this.$children.filter(vm=>vm.$options.name === "TabNav")
+      let tabItem = tabNav[0].$children.filter(vm=>vm.$options.name === "TabItem" 
+                            && vm.name === name)
+      let chosenVm = tabItem[0]
+      return chosenVm
+    }
   },
   mounted() {
-    this.eventBus.$emit("update:selected", this.selected);
+    this.eventBus.$on("trigger:selected",(name)=>{
+      let chosenVm = this.findChosenTabItem(name)
+      this.$emit("update:selected",name,chosenVm)
+      this.eventBus.$emit("update:selected",name,chosenVm)
+    })
+    let chosenVm = this.findChosenTabItem()
+    this.eventBus.$emit("update:selected",this.selected,chosenVm)
   },
 };
 </script>
