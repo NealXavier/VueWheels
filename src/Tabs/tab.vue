@@ -39,7 +39,7 @@ export default {
       this.$emit("update:selected",name,chosenVm)
       this.eventBus.$emit("update:selected",name,chosenVm)
     })
-    let chosenVm = this.findChosenTabItem()
+    let chosenVm = this.findChosenTabItem(this.selected)
     this.eventBus.$emit("update:selected",this.selected,chosenVm)
   },
 };

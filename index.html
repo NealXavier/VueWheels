@@ -19,7 +19,6 @@
     <!--Tab-->
     <!--@update:selected="val=>selected=val[0]"-->
     <x-tab :selected="selectedTab" @update:selected="(value,vm)=>selectedTab=value">
-      {{selectedTab}}
       <x-tab-nav>
         <template slot="actions">
           <button>设置</button>

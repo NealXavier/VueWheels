@@ -34,7 +34,7 @@ export default {
       let {width, left} = vm.$el.getBoundingClientRect()
       let {left: left2} = this.$refs.nav.getBoundingClientRect()
       this.$refs.line.style.width = `${width}px`
-      this.$refs.line.style.left = `${left - left2}px`
+      this.$refs.line.style.transform = `translateX(${left - left2}px)`
     }
   }
 };
@@ -51,6 +51,7 @@ export default {
       position: absolute
       bottom: 0
       border-bottom: 1px solid #00a1d6
+      transition all 250ms
     & > .actions-wrapper
       margin-left auto
       padding-right 2em
