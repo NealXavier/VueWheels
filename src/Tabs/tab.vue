@@ -13,6 +13,12 @@ export default {
     selected: {
       type: String,
     },
+    direction:{
+      default:"horizontal",
+      validator(value){
+        return ["horizontal","vertical"].includes(value)
+      }
+    }
   },
   data() {
     return {
@@ -34,15 +40,26 @@ export default {
     }
   },
   mounted() {
+    // direction 
+    if(this.direction === "horizontal" || ""){
+      // debugger
+      this.$el.style.flexDirection = "column"
+
+    }
+    this.eventBus.$emit("update:direction",this.direction,this)
+  
     this.eventBus.$on("trigger:selected",(name)=>{
       let chosenVm = this.findChosenTabItem(name)
-      this.$emit("update:selected",name,chosenVm)
-      this.eventBus.$emit("update:selected",name,chosenVm)
+      this.$emit("update:selected",name,chosenVm,this.direction)
+      this.eventBus.$emit("update:selected",name,chosenVm,this.direction)
     })
     let chosenVm = this.findChosenTabItem(this.selected)
-    this.eventBus.$emit("update:selected",this.selected,chosenVm)
+    this.eventBus.$emit("update:selected",this.selected,chosenVm,this.direction)
+
   },
 };
 </script>
-<style scoped>
+<style lang ="stylus" scoped>
+  .tab
+    display flex
 </style>

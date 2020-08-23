@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>vue造轮子</title>
+  <style>
+    body, html { height: 100%; }
+  </style>
 </head>
 <body>
   <div id="app">
@@ -18,10 +21,11 @@
 
     <!--Tab-->
     <!--@update:selected="val=>selected=val[0]"-->
-    <x-tab :selected="selectedTab" @update:selected="(value,vm)=>selectedTab=value">
+    <x-tab :selected="selectedTab" 
+          @update:selected="(value,vm)=>selectedTab=value"
+          direction="horizontal">
       <x-tab-nav>
         <template slot="actions">
-          <button>设置</button>
         </template>
         <x-tab-item name="gs">Warriors</x-tab-item>
         <x-tab-item name="la" disabled>Lakers</x-tab-item>

@@ -33,7 +33,7 @@ export default {
   },
   inject:["eventBus"],
   created() {
-    this.eventBus.$on("update:selected",(selected,vm)=>{
+    this.eventBus.$on("update:selected",(selected,vm,direction)=>{
       this.isActive = this.name === selected
     })
   },
