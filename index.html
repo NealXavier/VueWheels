@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>vue造轮子</title>
   <style>
+    *{box-sizing:border-box;}
     body, html { height: 100%; }
+    .index {
+      /* background: darkslateblue */
+      border: 1px solid orange;
+    }
   </style>
 </head>
 <body>
@@ -21,7 +26,7 @@
 
     <!--Tab-->
     <!--@update:selected="val=>selected=val[0]"-->
-    <x-tab :selected="selectedTab" 
+    <!-- <x-tab :selected="selectedTab" 
           @update:selected="(value,vm)=>selectedTab=value"
           direction="horizontal">
       <x-tab-nav>
@@ -36,8 +41,16 @@
         <x-tab-pane name="la">LeBronJames</x-tab-pane>
         <x-tab-pane name="bk">KevinDurant</x-tab-pane>
       </x-tab-content> 
-    </x-tab>
+    </x-tab> -->
 
+    <!--Row-->
+    <!-- attribute  span  gutter offset -->
+    <div class="index">
+      <x-row gutter="20">
+        <x-col span="20">20</x-col>
+        <x-col span="2" offset="2">2</x-col>
+      </x-row>
+    </div>
   </div>
   <script src='./src/app.js'></script>
 </body>
