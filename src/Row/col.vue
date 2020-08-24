@@ -1,9 +1,7 @@
 <template>
-  <div class="col" :class="[span && `span && col-${span}` , offset && `offset-${offset}`]"
-        :style="{paddingLeft:gutter/2+'px',paddingRight:gutter/2+'px'}">
-    <div style="border:1px solid green;">
+  <div class="col" :class="colClasses"
+        :style="colStyle">
       <slot></slot>
-    </div>
   </div>
 </template>
 
@@ -19,8 +17,23 @@ export default {
   },
   data() {
     return {
-      // gutter:0
+      gutter:0
     };
+  },
+  computed:{
+    colClasses(){
+      let {span,offset} = this
+      return [
+        span && `span && col-${span}`, 
+        offset && `offset-${offset}`
+      ]
+    },
+    colStyle(){
+      return {
+        paddingLeft:this.gutter/2+'px',
+        paddingRight:this.gutter/2+'px'
+      }
+    }
   },
   methods: {},
   created() {},
@@ -31,11 +44,8 @@ export default {
   $col-prefix = "col-"
   $offset-prefix = "offset-"
   .col{
-    // padding 0 10px
-    // background:#ddd;
     width:50%;
     height:100px;
-    // border:1px solid green;
     for num in (1..24){
       &.{$col-prefix}{num}{
         width (num/24)*100%

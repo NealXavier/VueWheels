@@ -1,7 +1,7 @@
 <!--  -->
 <template>
   <div class="row" 
-    :style="{marginLeft:- gutter/2+'px',marginRight:-gutter/2+'px'}">
+    :style="rowStyle">
     <slot></slot>
   </div>
 </template>
@@ -16,6 +16,14 @@ export default {
   data() {
     return {};
   },
+  computed:{
+    rowStyle(){
+      return {
+        marginLeft:- this.gutter/2+'px',
+        marginRight:-this.gutter/2+'px'
+      }
+    }
+  },
   methods: {},
   created() {},
   mounted() {
@@ -28,5 +36,4 @@ export default {
 <style scoped lang='stylus'>
   .row
     display: flex;
-    // margin: 0 -10px;
 </style>
