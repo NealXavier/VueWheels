@@ -98,7 +98,7 @@ export default {
         }
       } 
     }
-    @media (max-width: 768px) {
+    @media (min-width: 577px) {
       for num in (1..24){
         &.{$col-pad-prefix}{num}{
           width (num/24)*100%
@@ -110,7 +110,7 @@ export default {
         }
       } 
     }
-    @media (max-width: 992px) {
+    @media (min-width: 769px) {
       for num in (1..24){
         &.{$col-narrowPc-prefix}{num}{
           width (num/24)*100%
@@ -122,7 +122,7 @@ export default {
         }
       } 
     }
-    @media (max-width: 1200px) {
+    @media (min-width: 993px) {
       for num in (1..24){
         &.{$col-pc-prefix}{num}{
           width (num/24)*100%
