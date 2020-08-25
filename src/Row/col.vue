@@ -15,7 +15,7 @@ const  validator = obj => {
 }
 export default {
   props: {
-    span:{type:[Number,String],},
+    span:{type:[Number,String]},
     offset:{type:[Number,String],},
     phone:{type:Object,validator},
     pad:{type:Object,validator},
@@ -67,6 +67,8 @@ export default {
   $offset-prefix = "offset-"
   $col-phone-prefix = "col-phone-"
   $offset-phone-prefix  = "offset-phone-"
+  $col-pad-prefix = "col-pad-"
+  $offset-pad-prefix = "offset-pad-"
   $col-narrowPc-prefix = "col-narrowPc-"
   $offset-narrowPc-prefix  = "offset-narrowPc-"
   $col-pc-prefix = "col-pc-"

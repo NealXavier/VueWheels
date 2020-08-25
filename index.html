@@ -47,8 +47,18 @@
     <!-- attribute  span  gutter offset -->
     <div class="index">
       <x-row gutter="20" align="center">
-        <x-col span="20":phone="{span:12}" :pc="{span:8}">20</x-col>
-        <x-col span="4" :phone="{span:12}" :pc="{span:4}">4</x-col>
+        <x-col span="2"
+          :phone="{span:12}"
+          :pad="{span:8}"
+          :narrow-pc="{span:4}"
+          :pc="{span:2}"
+          :wide-pc="{span:1}">12</x-col>
+        <x-col span="22" 
+              :phone="{span:12}" 
+              :pad="{span:14}"
+              :narrow-pc="{span:18}"
+              :pc="{span:22}"
+              :wide-pc="{span:23}">12</x-col>
       </x-row>
     </div>
   </div>
