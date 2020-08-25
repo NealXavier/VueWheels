@@ -18,7 +18,7 @@ export default {
       validator(val){
         return ["center","left","right"].includes(val)
       }
-    }
+    },
   },
   data() {
     return {};
