@@ -1,7 +1,7 @@
 <template>
   <div class="col" :class="colClasses"
         :style="colStyle">
-      <slot></slot>
+        <slot></slot>
   </div>
 </template>
 
@@ -44,7 +44,7 @@ export default {
   $col-prefix = "col-"
   $offset-prefix = "offset-"
   .col{
-    width:50%;
+    border 1px solid green
     height:100px;
     for num in (1..24){
       &.{$col-prefix}{num}{

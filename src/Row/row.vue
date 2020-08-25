@@ -1,7 +1,8 @@
 <!--  -->
 <template>
   <div class="row" 
-    :style="rowStyle">
+    :style="rowStyle"
+    :class="rowClasses">
     <slot></slot>
   </div>
 </template>
@@ -11,6 +12,12 @@ export default {
   props: {
     gutter:{
       type:[Number,String],
+    },
+    align:{
+      type:String,
+      validator(val){
+        return ["center","left","right"].includes(val)
+      }
     }
   },
   data() {
@@ -22,6 +29,10 @@ export default {
         marginLeft:- this.gutter/2+'px',
         marginRight:-this.gutter/2+'px'
       }
+    },
+    rowClasses(){
+      let {align} = this
+      return [align && `align-${align}`]
     }
   },
   methods: {},
@@ -36,4 +47,10 @@ export default {
 <style scoped lang='stylus'>
   .row
     display: flex;
+    &.align-left
+      justify-content flex-start  
+    &.align-right
+      justify-content flex-end
+    &.align-center
+      justify-content center
 </style>
