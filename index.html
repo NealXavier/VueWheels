@@ -7,6 +7,11 @@
   <style>
     *{box-sizing:border-box;}
     body, html { height: 100%; }
+    .box {
+      width: 100px;
+      height: 100px;
+      border: 1px solid orange;
+    }
     /* .index { */
       /* background: darkslateblue */
       /* border: 1px solid orange; */
@@ -44,8 +49,8 @@
     </x-tab> -->
 
     <!--Row-->
-    <!-- attribute  span  gutter offset -->
-    <div class="index">
+    <!-- attribute  span  gutter offset align-->
+    <!-- <div class="index">
       <x-row gutter="20" align="center">
         <x-col span="2"
           :phone="{span:12}"
@@ -60,7 +65,14 @@
               :pc="{span:22}"
               :wide-pc="{span:23}">12</x-col>
       </x-row>
-    </div>
+    </div> -->
+
+    <!-- sliders -->
+    <x-sliders :selected="selectab">
+      <x-slides-item name="1"><div class="box">1</div></x-slides-item>
+      <x-slides-item name="2"><div class="box">2</div></x-slides-item>
+      <x-slides-item name="3"><div class="box">3</div></x-slides-item>
+    </x-sliders>
   </div>
   <script src='./src/app.js'></script>
 </body>
