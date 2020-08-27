@@ -43,9 +43,8 @@ new Vue({
       //     return ["horizontal,vertical"].includes(value)
       //   }
       // }
-
       // Sliders
-      selected:"Warriors"
+      selected:"Nets"
     }
   },
   created(){
