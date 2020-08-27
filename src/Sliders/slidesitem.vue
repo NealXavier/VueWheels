@@ -33,8 +33,8 @@ export default {
 };
 </script>
 <style scoped lang='stylus'>
-  .slides-item
-    flex-shrink 0 
+  .slide-item
+    flex-shrink 0
   .slide-leave-active
     position absolute
     left 0

@@ -15,6 +15,10 @@ export default {
   props: {
     selected:{
       type:String
+    },
+    autoplay:{
+      type:Boolean,
+      default:true
     }
   },
   data() {
@@ -22,6 +26,9 @@ export default {
     };
   },
   methods: {
+    getAllNames(){
+      return this.$children.map(vm=>vm.name)  
+    },
     selectedName(){
       return this.selected || this.$children[0].name
     },
@@ -29,12 +36,28 @@ export default {
         this.$children.forEach(vm=>{
         vm.selected = selected
       })
+    },
+    playAuto(delay = 1000){
+      let names = this.getAllNames()
+      let selectName = this.selectedName()
+      let idx = names.indexOf(selectName)
+      const run = ()=>{
+        if(idx === names.length) idx = 0
+        this.$emit("update:selected",names[idx])
+        idx++
+        setTimeout(run, delay);
+      }
+      setTimeout(run, delay);
     }
   },
   created() {},
   mounted() {
     let selected = this.selectedName()
     this.updateChildren(selected)
+
+    if(this.autoplay){
+      this.playAuto()
+    }
   },
   updated(){
     let selected = this.selectedName()
@@ -47,8 +70,6 @@ export default {
     border 1px solid red
     &-window
       overflow hidden
-      width 100px
-      height 100px
     &-wrapper
       display flex
       position relative

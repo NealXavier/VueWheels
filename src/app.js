@@ -45,19 +45,9 @@ new Vue({
       // }
 
       // Sliders
-      selectab:"1"
+      selected:"Warriors"
     }
   },
   created(){
-    let n = 1
-    const run = ()=>{
-      if(n === 4){
-        n = 1
-      } 
-      this.selectab = n.toString()
-      n++
-      setTimeout(run, 1000); 
-    }
-    run()
   }
 })
