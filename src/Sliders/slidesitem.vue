@@ -12,13 +12,15 @@ export default {
   name:"sliderItem",
   props: {
     name:{
-      type:String
+      type:String,
+      required:true
     }
   },
   data() {
     return {
       selected:undefined,
-      reverse:false
+      reverse:undefined,
+      index:0,
     };
   },
   computed:{
@@ -40,11 +42,10 @@ export default {
     position absolute
     left 0
     top 0
-    // width 100%
-    // height 100%
+    border 2px solid red
   .slide-enter-active,
   .slide-leave-active
-    transition all 3s
+    transition all 1s
   .slide-enter
     transform translateX(100%)
   .slide-enter.reverse

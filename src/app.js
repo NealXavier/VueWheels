@@ -44,7 +44,7 @@ new Vue({
       //   }
       // }
       // Sliders
-      selected:"Nets"
+      selected:"Warriors"
     }
   },
   created(){
