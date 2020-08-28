@@ -122,14 +122,26 @@ export default {
 </script>
 <style scoped lang='stylus'>
   .slides
-    border 1px solid red
     width 200px
+    color #ffffff
     &-window
       overflow hidden
     &-wrapper
+      background #FB7299
       display flex
       position relative
     &-dots
-      span.active
-        background red
+      display flex
+      justify-content center
+      align-items center
+      & > span
+        display flex
+        width 20px
+        height 20px 
+        margin 0 8px
+        justify-content center
+      color #666666
+      & > span.active
+        border-radius 50%
+        background #00a1d6  
 </style>
