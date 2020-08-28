@@ -20,7 +20,6 @@ export default {
     return {
       selected:undefined,
       reverse:undefined,
-      index:0,
     };
   },
   computed:{
@@ -30,9 +29,7 @@ export default {
   },
   methods: {},
   created() {},
-  mounted() {
-
-  },
+  mounted() {},
 };
 </script>
 <style scoped lang='stylus'>
@@ -42,7 +39,6 @@ export default {
     position absolute
     left 0
     top 0
-    border 2px solid red
   .slide-enter-active,
   .slide-leave-active
     transition all 1s
