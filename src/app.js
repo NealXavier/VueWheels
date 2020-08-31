@@ -8,8 +8,10 @@ import Vue from 'vue'
 // import tabPane from './Tabs/tabPane'
 // import row from './Row/row'
 // import col from './Row/col'
-import sliders from './Sliders/slides'
-import sliderItem from './Sliders/slidesitem'
+// import sliders from './Sliders/slides'
+// import sliderItem from './Sliders/slidesitem'
+import cascader from './Cascader/cascader'
+// import cascaderitem from './Cascader/cascader-item'
 
 
 // Vue.component('x-accordion',accordion)
@@ -24,8 +26,12 @@ import sliderItem from './Sliders/slidesitem'
 // Vue.component('x-row',row)
 // Vue.component('x-col',col)
 
-Vue.component('x-sliders',sliders)
-Vue.component('x-slides-item',sliderItem)
+// Vue.component('x-sliders',sliders)
+// Vue.component('x-slides-item',sliderItem)
+
+Vue.component('x-cascader',cascader)
+// Vue.component('x-cascaderitem',cascaderitem)
+
 
 new Vue({
   el:"#app",
@@ -44,7 +50,45 @@ new Vue({
       //   }
       // }
       // Sliders
-      selected:"Warriors"
+      // selected:"Warriors"
+
+      // Cascader
+      source:[
+        {
+        name:"浙江",
+        children:[
+          {
+            name:"杭州",
+            children:[
+              {name:"上城"},
+              {name:"下城"},
+              {name:"江干"}
+            ]
+          },
+          {
+            name:"嘉兴",
+            children:[
+              {name:"南湖"},
+              {name:"秀洲"},
+              {name:"嘉善"}
+            ]
+          }
+        ]
+        },
+        {
+        name:"广东",
+        children:[
+          {
+            name:"惠州",
+            children:[
+              {name:"惠城"},
+              {name:"惠阳"},
+              {name:"惠东"}
+            ]
+          }
+        ]
+        }
+      ]
     }
   },
   created(){
