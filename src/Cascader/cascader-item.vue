@@ -1,12 +1,12 @@
 <template>
   <div class="cascader-item">
       {{dataItem.name}}
-      <x-cascader-item
+      <!-- <x-cascader-item
         v-if="isChildrenExist(dataItem)"
         v-for="item in dataItem.children" 
         :key="item.name"
         :dataItem="item">
-    </x-cascader-item>
+    </x-cascader-item> -->
   </div>
 </template>
 
@@ -34,9 +34,8 @@ export default {
 </script>
 <style lang='stylus' scoped>
   .cascader-item
-    display inline-flex
+    display flex
+    flex-direction column
     border 1px solid green
-    .box 
-      display flex
-      border:1px solid red
+    padding 2px
 </style>

@@ -87,8 +87,20 @@ new Vue({
             ]
           }
         ]
+        },
+        {
+          name:"黑龙江",
+          children:[
+            {name:"哈尔滨"},
+            {name:"齐齐哈尔"}
+          ]
         }
-      ]
+          // {parent_id:null,name:"浙江",id:1},
+          // {parent_id:1,name:"杭州",id:2},
+          // {parent_id:1,name:"嘉兴",id:3},
+          // {parent_id:null,name:"广东",id:4},
+          // {parent_id:4,name:"惠州",id:5}
+        ]
     }
   },
   created(){
