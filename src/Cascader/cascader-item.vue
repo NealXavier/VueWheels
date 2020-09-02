@@ -1,10 +1,6 @@
 <template>
   <div class="cascader-item">
       <div class="leftItems">
-        <div>
-          level:{{level}}
-          <br/>
-        </div>
         <div
           class="label"
           v-for="item in items"
