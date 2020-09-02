@@ -35,6 +35,8 @@ Vue.component('x-cascader',cascader)
 
 new Vue({
   el:"#app",
+  props:{
+  },
   data() {
     return {
       // Accordion
@@ -100,7 +102,9 @@ new Vue({
           // {parent_id:1,name:"嘉兴",id:3},
           // {parent_id:null,name:"广东",id:4},
           // {parent_id:4,name:"惠州",id:5}
-        ]
+      ],
+      // curSelected
+      selected:[]
     }
   },
   created(){

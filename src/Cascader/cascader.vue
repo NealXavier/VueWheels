@@ -1,10 +1,15 @@
 <template>
   <div class="cascader">
+    {{selected && selected[0]&& selected[0].name || '空'}}
+    {{selected && selected[1]&& selected[1].name || '空'}}
+    {{selected && selected[2]&& selected[2].name || '空'}}
     <div class="trigger">
     </div>
     <div class="popover">
         <x-cascader-item 
-          :items="source"></x-cascader-item>
+          :items="source"
+          :selected="selected"
+          @update:selected="handleSelected"></x-cascader-item>
     </div>
   </div>
 </template>
@@ -21,6 +26,10 @@ export default {
     source:{
       type:Array,
     },
+    selected:{
+      type:Array,
+      default:()=>{[]}
+    }
   },
   data() {
     return {
@@ -29,22 +38,12 @@ export default {
     }
   },
   computed:{
-    level2Items(){
-      if(this.level1Selected){
-        return this.level1Selected.children;
-      }else{
-        return []
-      }
-    },
-    level3Items(){
-      if(this.level2Selected){
-        return this.level2Selected.children;
-      }else{
-        return []
-      }
+  },
+  methods: {
+    handleSelected(newSelected){
+      this.$emit("update:selected",newSelected)
     }
   },
-  methods: {},
   created() {},
   mounted() {},
 };

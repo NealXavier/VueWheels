@@ -1,17 +1,24 @@
 <template>
   <div class="cascader-item">
       <div class="leftItems">
+        <div>
+          level:{{level}}
+          <br/>
+        </div>
         <div
           class="label"
           v-for="item in items"
-          @click="leftSelected = item"
+          @click="handleClick(item)"
           :key="item.name"
         >{{item.name}}</div>
       </div>
       <div class="rightItems"
-          v-if="rightItems">
+            v-if="rightItems">
           <x-cascader-item
-            :items="rightItems">
+            :items="rightItems"
+            :level="level+1"
+            :selected="selected"
+            @update:selected="onUpdateSelected">
           </x-cascader-item>
       </div>
   </div>
@@ -24,6 +31,14 @@ export default {
     items:{
       type:Array,
     },
+    selected:{
+      type:Array,
+      default: ()=>[]
+    },
+    level:{
+      type:Number,
+      default:0
+    }
   },
   data() {
     return {
@@ -32,8 +47,9 @@ export default {
   },
   computed: {
     rightItems(){
-      if(this.leftSelected && this.leftSelected.children){
-        return this.leftSelected.children
+      let curSelected = this.selected[this.level]
+      if(curSelected && curSelected.children){
+        return curSelected.children
       }else{
         return null
       }
@@ -43,6 +59,19 @@ export default {
     isChildrenExist(dataItem) {
       return dataItem.children ? true : false;
     },
+    // emit the selected no object but array 
+    handleClick(item){
+      // not to modify the prop "selected" directly 
+      let copyArr = JSON.parse(JSON.stringify(this.selected))
+      copyArr[this.level] = item
+      // deleted after current level 
+      copyArr.splice(this.level+1)
+      
+      this.$emit("update:selected",copyArr)
+    },
+    onUpdateSelected(selected){
+      this.$emit("update:selected",selected)
+    }
   },
   created() {},
   mounted() {},
@@ -51,6 +80,8 @@ export default {
 <style lang='stylus' scoped>
   .cascader-item
     display flex
+    justify-content flex-start
+    align-items flex-start
     .leftItems
       border 1px solid green
 </style>
