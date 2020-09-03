@@ -38,7 +38,6 @@ export default {
   },
   data() {
     return {
-      leftSelected:undefined
     };
   },
   computed: {
@@ -58,6 +57,7 @@ export default {
     // emit the selected no object but array 
     handleClick(item){
       // not to modify the prop "selected" directly 
+      // this.$set(this.selected,this.level,item)
       let copyArr = JSON.parse(JSON.stringify(this.selected))
       copyArr[this.level] = item
       // deleted after current level 
@@ -80,4 +80,6 @@ export default {
     align-items flex-start
     .leftItems
       border 1px solid green
+      height 100px
+      overflow auto
 </style>

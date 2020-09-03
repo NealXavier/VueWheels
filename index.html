@@ -79,7 +79,9 @@
     <!--Cascader -->
     <x-cascader 
         :source="source"
-        :selected.sync="selected"></x-cascader>
+        :selected="selected"
+        @update:selected = "updateSelected"
+        :load-data="loadData"></x-cascader>
   </div>
   <script src='./src/app.js'></script>
 </body>

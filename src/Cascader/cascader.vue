@@ -1,8 +1,9 @@
 <template>
   <div class="cascader">
-    {{selected && selected[0]&& selected[0].name || '空'}}
-    {{selected && selected[1]&& selected[1].name || '空'}}
-    {{selected && selected[2]&& selected[2].name || '空'}}
+    <div>
+      {{selected && selected[0] && selected[0].name || '空'}}
+      {{selected && selected[1] && selected[1].name || '空'}}
+    </div>
     <div class="trigger">
     </div>
     <div class="popover">
@@ -29,6 +30,9 @@ export default {
     selected:{
       type:Array,
       default:()=>{[]}
+    },
+    loadData:{
+      type:Function,
     }
   },
   data() {
@@ -41,8 +45,18 @@ export default {
   },
   methods: {
     handleSelected(newSelected){
-      this.$emit("update:selected",newSelected)
-    }
+      this.$emit("update:selected",newSelected);
+
+      let lastItem = newSelected[newSelected.length - 1]
+
+      const updateSource = (result)=>{
+        let lastSelected = this.source.filter(item=>item.id === lastItem.id)[0]
+        this.$set(lastSelected,"children",result)
+        console.log(this.source)
+      }
+
+      this.loadData(newSelected,updateSource)
+    },
   },
   created() {},
   mounted() {},
