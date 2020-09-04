@@ -1,9 +1,9 @@
 <template>
-  <div class="cascader">
-    <div class="trigger">
+  <div class="cascader" ref="cascader" v-click-outside="close">
+    <div class="trigger" @click="toggle">
         {{result || '&nbsp;'}}
     </div>
-    <div class="popover">
+    <div class="popover" v-if="popoverIsVisible">
         <x-cascader-item 
           :items="source"
           :selected="selected"
@@ -14,9 +14,11 @@
 </template>
 
 <script>
+import ClickOutside from '../../click-outside'
 import cascaderitem from './cascader-item.vue'
 export default {
   name:"cascader",
+  directives:{ClickOutside},
   components:{
     // import (x-cascader-item) component
     "x-cascader-item":cascaderitem
@@ -35,6 +37,7 @@ export default {
   },
   data() {
     return {
+      popoverIsVisible:false
     }
   },
   computed:{
@@ -43,6 +46,19 @@ export default {
     }
   },
   methods: {
+    close(){
+      this.popoverIsVisible = false
+    },
+    open(){
+      this.popoverIsVisible = true
+    },
+    toggle(){
+      if(this.popoverIsVisible){
+        this.close()
+      }else{
+        this.open()
+      }
+    },
     handleSelected(newSelected){
       this.$emit("update:selected",newSelected)
 
@@ -80,13 +96,11 @@ export default {
 </script>
 <style lang='stylus' scoped>
   .cascader
+      display inline-block
     .trigger
-      display inline-flex
       border 1px solid #00a1d6
       height 30px
       min-width 150px
       border-radius 4px
       color #666
-    .popover
-      height 200px
 </style>
