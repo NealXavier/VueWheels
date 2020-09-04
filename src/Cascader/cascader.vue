@@ -1,8 +1,8 @@
 <template>
   <div class="cascader">
     <div class="trigger">
+        {{result || '&nbsp;'}}
     </div>
-    {{selected}}
     <div class="popover">
         <x-cascader-item 
           :items="source"
@@ -38,6 +38,9 @@ export default {
     }
   },
   computed:{
+    result(){
+      return this.selected.map(item=>item.name).join("/")
+    }
   },
   methods: {
     handleSelected(newSelected){
@@ -78,10 +81,12 @@ export default {
 <style lang='stylus' scoped>
   .cascader
     .trigger
-      border 1px solid red
+      display inline-flex
+      border 1px solid #00a1d6
       height 30px
-      width 70px
+      min-width 150px
+      border-radius 4px
+      color #666
     .popover
-      border 1px solid green
       height 200px
 </style>

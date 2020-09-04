@@ -3,13 +3,13 @@
       <div class="leftItems">
         <div
           class="label"
-          v-for="item in items"
+          v-for="item in items" 
           @click="handleClick(item)"
           :key="item.name"
         >{{item.name}}
-        <div style="display:inline-block;color:#1890ff;"
+        <div class="rightArrow"
               v-if="rightArrowisVisible(item)">></div>
-        </div>
+        </div> 
       </div>
       <div class="rightItems"
             v-if="rightItems">
@@ -93,7 +93,15 @@ export default {
     justify-content flex-start
     align-items flex-start
     .leftItems
-      border 1px solid green
-      height 100px
+      border 1px solid #999999
+      height 150px
       overflow auto
+      border-radius 2px
+      .label
+        display flex
+        padding .5em 1em
+        white-space nowrap
+      .rightArrow
+        color #fb7299
+        margin-left auto
 </style>
