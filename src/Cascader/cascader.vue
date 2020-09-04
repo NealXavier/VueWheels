@@ -1,9 +1,5 @@
 <template>
   <div class="cascader">
-    <div>
-      {{selected && selected[0] && selected[0].name || '空'}}
-      {{selected && selected[1] && selected[1].name || '空'}}
-    </div>
     <div class="trigger">
     </div>
     <div class="popover">
@@ -37,24 +33,38 @@ export default {
   },
   data() {
     return {
-      level1Selected:null,
-      level2Selected:null,
     }
   },
   computed:{
   },
   methods: {
     handleSelected(newSelected){
-      this.$emit("update:selected",newSelected);
-
-      let lastItem = newSelected[newSelected.length - 1]
+      this.$emit("update:selected",newSelected)
 
       const updateSource = (result)=>{
-        let lastSelected = this.source.filter(item=>item.id === lastItem.id)[0]
-        this.$set(lastSelected,"children",result)
-        console.log(this.source)
+        let lastItem = newSelected[newSelected.length - 1]
+        let copy = JSON.parse(JSON.stringify(this.source))
+        let lastSelected = find(lastItem.id,copy)
+        lastSelected.children = result
+        
+        this.$emit("update:source",copy)
       }
-
+      // 找到lastSelected 位于 this.source 的位置。
+      function find(id,items){
+        for(let i = 0,j=items.length;i < j;i++){
+          if(id === items[i].id){
+            return items[i]
+          }else{
+            if(items[i].children && items[i].children.length > 0){
+              if(find(id,items[i].children)){
+                return find(id,items[i].children)
+              }
+            }else{
+              continue
+            }
+          }
+        }
+      }
       this.loadData(newSelected,updateSource)
     },
   },

@@ -138,7 +138,8 @@ new Vue({
       // })
     },
     loadData(selected,callback){
-      let {id} = selected[0]
+      console.log(selected);
+      let {id} = selected[this.selected.length - 1]
       ajax(id).then(result=>{
         // 得到 children 的值 result
         // source的值, source:就是整个数组链条
@@ -146,6 +147,9 @@ new Vue({
         // this.$set(lastSelected,"children",result)
         callback(result)
       })
+    },
+    updateSource(source){
+      this.source = source
     }
   }
 })

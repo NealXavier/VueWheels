@@ -42,11 +42,11 @@ export default {
   },
   computed: {
     rightItems(){
-      let curSelected = this.selected[this.level]
-      if(curSelected && curSelected.children){
-        return curSelected.children
-      }else{
-        return null
+      if(this.selected[this.level]){
+        let selected = this.items.filter(item=>item.name === this.selected[this.level].name)
+        if(selected && selected[0].children && selected[0].children.length > 0){
+          return selected[0].children
+        }
       }
     }
   },
