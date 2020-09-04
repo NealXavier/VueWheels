@@ -2,10 +2,12 @@
   <div class="cascader">
     <div class="trigger">
     </div>
+    {{selected}}
     <div class="popover">
         <x-cascader-item 
           :items="source"
           :selected="selected"
+          :load-data = "loadData"
           @update:selected="handleSelected"></x-cascader-item>
     </div>
   </div>
@@ -25,7 +27,7 @@ export default {
     },
     selected:{
       type:Array,
-      default:()=>{[]}
+      default:()=>[]
     },
     loadData:{
       type:Function,
@@ -48,6 +50,7 @@ export default {
         lastSelected.children = result
         
         this.$emit("update:source",copy)
+        // console.log(this);
       }
       // 找到lastSelected 位于 this.source 的位置。
       function find(id,items){
@@ -65,7 +68,7 @@ export default {
           }
         }
       }
-      this.loadData(newSelected,updateSource)
+      this.loadData && this.loadData(newSelected,updateSource)
     },
   },
   created() {},

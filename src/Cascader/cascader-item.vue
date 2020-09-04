@@ -6,11 +6,15 @@
           v-for="item in items"
           @click="handleClick(item)"
           :key="item.name"
-        >{{item.name}}</div>
+        >{{item.name}}
+        <div style="display:inline-block;color:#1890ff;"
+              v-if="rightArrowisVisible(item)">></div>
+        </div>
       </div>
       <div class="rightItems"
             v-if="rightItems">
           <x-cascader-item
+            :load-data = "loadData"
             :items="rightItems"
             :level="level+1"
             :selected="selected"
@@ -34,6 +38,9 @@ export default {
     level:{
       type:Number,
       default:0
+    },
+    loadData:{
+      type:Function
     }
   },
   data() {
@@ -51,6 +58,13 @@ export default {
     }
   },
   methods: {
+    rightArrowisVisible(item){
+      if(this.loadData){
+        return item.isLeaf?false:true
+      }else{
+        return item.children?true:false
+      }
+    },
     isChildrenExist(dataItem) {
       return dataItem.children ? true : false;
     },
