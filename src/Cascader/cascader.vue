@@ -8,6 +8,7 @@
           :items="source"
           :selected="selected"
           :load-data = "loadData"
+          :loading-item="loadingItem"
           @update:selected="handleSelected"></x-cascader-item>
     </div>
   </div>
@@ -37,7 +38,8 @@ export default {
   },
   data() {
     return {
-      popoverIsVisible:false
+      popoverIsVisible:false,
+      loadingItem:null
     }
   },
   computed:{
@@ -61,15 +63,13 @@ export default {
     },
     handleSelected(newSelected){
       this.$emit("update:selected",newSelected)
-
       const updateSource = (result)=>{
         let lastItem = newSelected[newSelected.length - 1]
         let copy = JSON.parse(JSON.stringify(this.source))
         let lastSelected = find(lastItem.id,copy)
         lastSelected.children = result
-        
         this.$emit("update:source",copy)
-        // console.log(this);
+        this.loadingItem = null
       }
       // 找到lastSelected 位于 this.source 的位置。
       function find(id,items){
@@ -87,7 +87,11 @@ export default {
           }
         }
       }
-      this.loadData && this.loadData(newSelected,updateSource)
+      let lastItem = newSelected[newSelected.length - 1]
+      if(this.loadData && lastItem && (!lastItem.isLeaf)){
+        this.loadingItem = lastItem
+        this.loadData(newSelected,updateSource)
+      }
     },
   },
   created() {},

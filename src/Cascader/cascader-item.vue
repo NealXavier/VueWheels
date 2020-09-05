@@ -7,8 +7,16 @@
           @click="handleClick(item)"
           :key="item.name"
         >{{item.name}}
-        <div class="rightArrow"
-              v-if="rightArrowisVisible(item)">></div>
+        <span class="icons">
+          <template v-if="loadingItem && loadingItem.name && loadingItem.name === item.name">
+            <icon name="loading" class="loading"></icon>
+          </template>
+          <template v-else>
+            <icon
+              v-if="rightArrowisVisible(item)" 
+              class="next" name="right"></icon>
+           </template>
+        </span>
         </div> 
       </div>
       <div class="rightItems"
@@ -25,9 +33,15 @@
 </template>
 
 <script>
+import Icon from '../icon'
 export default {
   name: "x-cascader-item",
+  components:{Icon},
   props: {
+    loadingItem:{
+      type:Object,
+      default:function(){return {}}
+    },
     items:{
       type:Array,
     },
@@ -88,6 +102,7 @@ export default {
 };
 </script>
 <style lang='stylus' scoped>
+@import "../--var.styl"
   .cascader-item
     display flex
     justify-content flex-start
@@ -101,7 +116,12 @@ export default {
         display flex
         padding .5em 1em
         white-space nowrap
-      .rightArrow
-        color #fb7299
+      .icons
         margin-left auto
+        .next
+          transform scale(0.5)
+          vertical-align middle
+        .loading 
+          vertical-align middle
+          animation spin 2s infinite linear
 </style>
