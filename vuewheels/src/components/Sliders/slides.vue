@@ -4,24 +4,26 @@
     <div class="slides-window" 
           @mouseenter="onMouseEnter"
           @mouseleave="onMouseLeave">
-      <div class="slides-left">
-        <icon name="left"></icon>
-      </div>
+      <!-- <div class="slides-left" style="display:inline-flex;">
+        <div style="display:flex;flex-direction:column;justify-content:center;">
+          <span style="display:inline-block;border-radius:4px;background:red;width:10px;height:10px;vertical-align:middle;"></span>
+        </div>
+      </div> -->
       <div class="slides-wrapper">
         <slot></slot>
-        <div class="slides-dots">
-          <span @click="select(n-1)"
-            :class="{active:curIdx === n-1}"
-            v-for="n in childLen" 
-            :key="n-1">{{n}}</span>
-        </div>
+      </div>
+      <div class="slides-dots">
+        <span @click="select(n-1)"
+          :class="{active:curIdx === n-1}"
+          v-for="n in childLen" 
+          :key="n-1">{{n}}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Icon from '../icon'
+import Icon from '../../icon'
 export default {
   name:'sliders',
   components:{Icon},
@@ -131,21 +133,12 @@ export default {
     display flex
     justify-content center
     &-window
-      overflow hidden
-      display flex   
-    &-left 
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      transform scale(2)
-      margin-right 10px
-      height 90%
+      overflow hidden      
     &-wrapper
       background #FB7299
       display inline-block
       position relative
     &-dots
-      background white
       display flex
       justify-content center
       align-items center
