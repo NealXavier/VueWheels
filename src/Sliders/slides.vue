@@ -4,6 +4,11 @@
     <div class="slides-window" 
           @mouseenter="onMouseEnter"
           @mouseleave="onMouseLeave">
+      <!-- <div class="slides-left" style="display:inline-flex;">
+        <div style="display:flex;flex-direction:column;justify-content:center;">
+          <span style="display:inline-block;border-radius:4px;background:red;width:10px;height:10px;vertical-align:middle;"></span>
+        </div>
+      </div> -->
       <div class="slides-wrapper">
         <slot></slot>
       </div>
@@ -13,13 +18,15 @@
           v-for="n in childLen" 
           :key="n-1">{{n}}</span>
       </div>
-    </div>  
+    </div>
   </div>
 </template>
 
 <script>
+import Icon from '../icon'
 export default {
   name:'sliders',
+  components:{Icon},
   props: {
     selected:{
       type:String
@@ -82,7 +89,7 @@ export default {
       })
     },
     playAuto(delay = 2000){
-      if(this.timer) reteurn
+      if(this.timer) return
       const run = ()=>{
         let idx = this.names.indexOf(this.selectedName())
         // how the direction
@@ -90,7 +97,7 @@ export default {
         this.select(idx)
         this.timer = setTimeout(run, delay)
       }
-      run()
+      // run()
     },
     onMouseEnter(){
       this.pause()
@@ -122,25 +129,27 @@ export default {
 </script>
 <style scoped lang='stylus'>
   .slides
-    width 200px
     color #ffffff
+    display flex
+    justify-content center
     &-window
-      overflow hidden
+      overflow hidden      
     &-wrapper
       background #FB7299
-      display flex
+      display inline-block
       position relative
     &-dots
       display flex
       justify-content center
       align-items center
+      margin-top 5px
       & > span
         display flex
         width 20px
         height 20px 
         margin 0 8px
         justify-content center
-      color #666666
+        color #999999
       & > span.active
         border-radius 50%
         background #00a1d6  

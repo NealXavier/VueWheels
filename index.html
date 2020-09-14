@@ -7,7 +7,7 @@
   <style>
     *{box-sizing:border-box;}
     body, html { height: 100%; }
-    .box {width: 200px;height: 200px;}
+    .box {width:500px;height: 200px;}
     /* .index { */
       /* background: darkslateblue */
       /* border: 1px solid orange; */
@@ -64,7 +64,7 @@
     </div> -->
 
     <!-- Sliders -->
-    <!-- <x-sliders :selected.sync="selected">
+    <x-sliders :selected.sync="selected">
         <x-slides-item name="Warriors">
           <div class="box">Warriors</div>
         </x-slides-item>
@@ -74,17 +74,19 @@
         <x-slides-item name="Nets">
           <div class="box">Nets</div>
         </x-slides-item>
-    </x-sliders> -->
+    </x-sliders>
     
     <!--Cascader -->
     <!--options: 1.load-data 2.source-->
-    <x-cascader 
+    <!-- <x-cascader 
         :source="source"
         :selected="selected"
         @update:selected = "updateSelected"
         @update:source="updateSource"
         :load-data="loadData"
-        ></x-cascader>
+        ></x-cascader> -->
+    <!-- <p>{{name}}</p>
+    <x-input v-model="name"/> -->
   </div>
   <script src='./src/app.js'></script>
 </body>
