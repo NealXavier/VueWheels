@@ -9,9 +9,6 @@
   </div>
 </template>>
 
-<style>
-</style>
-
 <script>
 export default {
   name:'acditem',
@@ -52,13 +49,11 @@ export default {
 </script>
 
 <style lang="stylus">
-  $grey = #ddd
-  $border-radius = 4px
   .acdItem
     &>.content
       padding 0 8px
     & > .title
-      border 1px solid $grey
+      border 1px solid #ddd
       margin-top -1px
       margin-left -1px
       margin-right -1px
@@ -66,9 +61,9 @@ export default {
       align-items center
       padding 0 8px
     &:first-child > .title
-      border-top-left-radius $border-radius
-      border-top-right-radius $border-radius
+      border-top-left-radius 4px
+      border-top-right-radius 4px
     &:last-child > .title
-      border-bottom-left-radius $border-radius
-      border-bottom-right-radius $border-radius
+      border-bottom-left-radius 4px
+      border-bottom-right-radius 4px
 </style>

@@ -1,4 +1,4 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 // import accordion from './Accordion/accordion'
 // import acditem from './Accordion/acdItem'
 // import tab from './Tabs/tab'
@@ -8,8 +8,8 @@ import Vue from 'vue'
 // import tabPane from './Tabs/tabPane'
 // import row from './Row/row'
 // import col from './Row/col'
-import sliders from './Sliders/slides'
-import sliderItem from './Sliders/slidesitem'
+// import sliders from './Sliders/slides'
+// import sliderItem from './Sliders/slidesitem'
 // import cascader from './Cascader/cascader'
 // import cascaderitem from './Cascader/cascader-item'
 // import icon from 'icon.vue'
@@ -27,8 +27,8 @@ import sliderItem from './Sliders/slidesitem'
 // Vue.component('x-row',row)
 // Vue.component('x-col',col)
 
-Vue.component('x-sliders',sliders)
-Vue.component('x-slides-item',sliderItem)
+// Vue.component('x-sliders',sliders)
+// Vue.component('x-slides-item',sliderItem)
 
 // Vue.component('x-cascader',cascader)
 // Vue.component('x-icon',icon)
@@ -56,12 +56,12 @@ Vue.component('x-slides-item',sliderItem)
 //   })
 // }
 
-new Vue({
-  el:"#app",
-  props:{
-  },
-  data() {
-    return {
+// new Vue({
+//   el:"#app",
+//   props:{
+//   },
+//   data() {
+//     return {
       // name:"爽约"
       // Accordion
       // selectTab:1
@@ -76,7 +76,7 @@ new Vue({
       //   }
       // }
       // Sliders
-      selected:"Warriors"
+      // selected:"Warriors"
 
       // Cascader
       // source:[
@@ -131,16 +131,16 @@ new Vue({
       // 
       // selected:[],
       // source:[],
-    }
-  },
-  created(){
+    // }
+  // },
+  // created(){
       // if(this.source.length === 0){
       //   ajax().then(val=>{
       //     this.source = val  // top level
       //   })
       // }
-  },
-  methods:{
+  // },
+  // methods:{
     // updateSelected(selected){
     //   // set data "selected" value
     //   this.selected = selected
@@ -154,5 +154,5 @@ new Vue({
     // updateSource(source){
     //   this.source = source
     // }
-  }
-})
+  // }
+// })

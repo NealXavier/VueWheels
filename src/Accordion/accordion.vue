@@ -59,9 +59,7 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  $grey = #ddd
-  $border-radius = 4px
   .collapse
-    border: 1px solid $grey;
-    border-radius: $border-radius;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 </style>

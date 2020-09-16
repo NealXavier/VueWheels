@@ -4,12 +4,17 @@
   </svg>
 </template>
 <script>
-  import './svg'
+  import Vue from 'vue'
   export default {
     name: 'Icon',
-    props: ['name']
+    props: ['name'],
+    mounted(){
+      import("./svg.js").then(svg=>{})
+    }
   }
 </script>
-<style lang="scss" scoped>
-  .g-icon {width: 1em; height: 1em; }
+<style lang="stylus" scoped>
+  .g-icon 
+    width: 1em; 
+    height: 1em;
 </style>

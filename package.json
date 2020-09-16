@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npx parcel index.html --no-cache",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,16 +25,18 @@
   "homepage": "https://github.com/NealXavier/VueWheels#readme",
   "dependencies": {
     "icon.vue": "^0.1.5",
+    "sass-loader": "^10.0.2",
     "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
-    "vue": "^2.6.11",
-    "vue-hot-reload-api": "^2.3.4"
+    "vue": "^2.6.12",
+    "vue-hot-reload-api": "^2.3.4",
+    "vuepress": "^1.5.4"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.2.0",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.26.10",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.12"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js"

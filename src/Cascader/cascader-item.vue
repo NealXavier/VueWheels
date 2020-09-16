@@ -26,6 +26,7 @@
             :items="rightItems"
             :level="level+1"
             :selected="selected"
+            :loading-item = "loadingItem"
             @update:selected="onUpdateSelected">
           </x-cascader-item>
       </div>
@@ -102,7 +103,10 @@ export default {
 };
 </script>
 <style lang='stylus' scoped>
-@import "../--var.styl"
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
   .cascader-item
     display flex
     justify-content flex-start

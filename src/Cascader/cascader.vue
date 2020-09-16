@@ -15,15 +15,22 @@
 </template>
 
 <script>
-import ClickOutside from '../../click-outside'
 import cascaderitem from './cascader-item.vue'
+import ClickOutside from '../../click-outside'
 export default {
   name:"cascader",
-  directives:{ClickOutside},
   components:{
     // import (x-cascader-item) component
     "x-cascader-item":cascaderitem
   },
+  directives:{ClickOutside},
+  // mounted(){
+  //   import("../../click-outside.js").then(ClickOutside=>{
+  //     console.log(ClickOutside);
+  //     this.directives = module
+  //     Vue.directive = {ClickOutside}
+  //   })
+  // },
   props: {
     source:{
       type:Array,

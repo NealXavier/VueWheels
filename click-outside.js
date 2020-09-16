@@ -8,8 +8,9 @@ let onClickDocument = (e) => {
     }
   })
 }
-
-document.addEventListener('click', onClickDocument)
+if(document){
+  document.addEventListener('click', onClickDocument)
+}
 let callbacks = []
 export default {
   bind: function (el, binding, vnode) {
@@ -18,7 +19,9 @@ export default {
 }
 
 let removeListener = () => {
-  document.removeEventListener('click', onClickDocument)
+  if(document){
+    document.removeEventListener('click', onClickDocument)
+  }
 }
 
 export {removeListener}
