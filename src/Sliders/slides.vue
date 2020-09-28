@@ -4,9 +4,6 @@
     <div class="slides-window" 
           @mouseenter="onMouseEnter"
           @mouseleave="onMouseLeave">
-      <div class="slides-left">
-        <icon name="left"></icon>
-      </div>
       <div class="slides-wrapper">
         <slot></slot>
         <div class="slides-dots">

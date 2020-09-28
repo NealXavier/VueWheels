@@ -1,4 +1,4 @@
-// import Vue from 'vue'
+import Vue from 'vue'
 // import accordion from './Accordion/accordion'
 // import acditem from './Accordion/acdItem'
 // import tab from './Tabs/tab'
@@ -56,12 +56,12 @@
 //   })
 // }
 
-// new Vue({
-//   el:"#app",
-//   props:{
-//   },
-//   data() {
-//     return {
+new Vue({
+  el:"#app",
+  props:{
+  },
+  data() {
+    return {
       // name:"爽约"
       // Accordion
       // selectTab:1
@@ -131,8 +131,8 @@
       // 
       // selected:[],
       // source:[],
-    // }
-  // },
+    }
+  },
   // created(){
       // if(this.source.length === 0){
       //   ajax().then(val=>{
@@ -155,4 +155,4 @@
     //   this.source = source
     // }
   // }
-// })
+})
